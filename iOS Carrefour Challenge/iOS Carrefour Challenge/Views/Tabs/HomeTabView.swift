@@ -14,22 +14,22 @@ struct HomeTabView: View {
                 UsersTabView()
             }
             .tabItem {
-                Image(systemName: "person.fill")
-                Text("Lista de Usuários")
+                Image(systemName: String.systemImages.personFill)
+                Text(String.hardedCode.usersList)
             }
             NavigationView {
                 UsersTabView(displayType: .grid)
             }
             .tabItem {
-                Image(systemName: "rectangle.grid.3x2")
-                Text("Grid de Usuários")
+                Image(systemName: String.systemImages.rectangleGrid)
+                Text(String.hardedCode.usersGrid)
             }
             NavigationView {
-                Text("Sobre o App")
+                Text(String.hardedCode.aboutApp)
             }
                 .tabItem {
-                    Image(systemName: "info.circle.fill")
-                    Text("Sobre o App")
+                    Image(systemName: String.systemImages.infoCircleFill)
+                    Text(String.hardedCode.aboutApp)
                 }
         }
     }

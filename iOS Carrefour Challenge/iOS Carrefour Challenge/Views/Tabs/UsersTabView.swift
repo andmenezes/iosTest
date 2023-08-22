@@ -7,44 +7,38 @@
 
 import SwiftUI
 
-enum DisplayType {
-    case list
-    case grid
-}
-
 struct UsersTabView: View {
     @ObservedObject var data = RequestManager.shared
     var displayType: DisplayType = .list
     
     var body: some View {
         if displayType == .list {
-            UsersListView(users: self.data.usersArray, loadingText: "Estamos carregando os usuários 🤘🏻", displayType: self.displayType)
+            UsersListView(users: self.data.usersArray, loadingText: String.hardedCode.loadingUsers, displayType: self.displayType)
             
-                .navigationTitle("Github Users")
+                .navigationTitle(String.hardedCode.gitHubUsers)
                 .navigationBarItems(trailing:
                                         Button(action: {
                     data.getUsersAPiData()
                 }) {
-                    Image(systemName: "arrow.clockwise")
+                    Image(systemName: String.systemImages.arrowClockwise)
                         .font(.body)
                 }
                 )
             
         } else {
             
-            UsersGridView(users: self.data.usersArray, loadingText: "Estamos carregando os usuários 🤘🏻", displayType: .grid)
+            UsersGridView(users: self.data.usersArray, loadingText: String.hardedCode.loadingUsers, displayType: .grid)
             
-                .navigationTitle("Github Users")
+                .navigationTitle(String.hardedCode.gitHubUsers)
                 .navigationBarItems(trailing:
                                         Button(action: {
                     data.getUsersAPiData()
                 }) {
-                    Image(systemName: "arrow.clockwise")
+                    Image(systemName: String.systemImages.arrowClockwise)
                         .font(.body)
                 }
                 )
         }
-        
     }
 }
 

@@ -23,6 +23,8 @@
 		7E9C5A162A94D78900231F21 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C5A152A94D78900231F21 /* HomeTabView.swift */; };
 		7E9C5A182A94D8F100231F21 /* UsersTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C5A172A94D8F100231F21 /* UsersTabView.swift */; };
 		7E9C5A1A2A94F13700231F21 /* UsersGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C5A192A94F13700231F21 /* UsersGridView.swift */; };
+		7E9C5A1F2A94F7B600231F21 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C5A1E2A94F7B600231F21 /* Enums.swift */; };
+		7E9C5A222A94F80100231F21 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C5A212A94F80100231F21 /* Strings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		7E9C5A152A94D78900231F21 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 		7E9C5A172A94D8F100231F21 /* UsersTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTabView.swift; sourceTree = "<group>"; };
 		7E9C5A192A94F13700231F21 /* UsersGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersGridView.swift; sourceTree = "<group>"; };
+		7E9C5A1E2A94F7B600231F21 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		7E9C5A212A94F80100231F21 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,12 +118,10 @@
 			children = (
 				7E9C59DE2A94BDD800231F21 /* iOS_Carrefour_ChallengeApp.swift */,
 				7E9C59E02A94BDD800231F21 /* MainView.swift */,
-				7E9C5A152A94D78900231F21 /* HomeTabView.swift */,
-				7E9C5A172A94D8F100231F21 /* UsersTabView.swift */,
-				7E9C5A0F2A94C88A00231F21 /* UserTileView.swift */,
-				7E9C5A132A94D47800231F21 /* UsersListView.swift */,
-				7E9C5A192A94F13700231F21 /* UsersGridView.swift */,
+				7E9C5A1B2A94F71700231F21 /* Views */,
 				7E9C5A082A94C06D00231F21 /* Data */,
+				7E9C5A1D2A94F75E00231F21 /* RequestManager */,
+				7E9C5A202A94F7D500231F21 /* Globals */,
 				7E9C59E22A94BDDC00231F21 /* Assets.xcassets */,
 				7E9C59E42A94BDDC00231F21 /* Preview Content */,
 			);
@@ -157,9 +159,45 @@
 				7E9C5A092A94C09700231F21 /* UserEntity.swift */,
 				7E9C5A0B2A94C5CD00231F21 /* UserDetailEntity.swift */,
 				7E9C5A0D2A94C5D900231F21 /* UserReposEntity.swift */,
-				7E9C5A112A94D0E200231F21 /* RequestManager.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		7E9C5A1B2A94F71700231F21 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E9C5A1C2A94F74400231F21 /* Tabs */,
+				7E9C5A0F2A94C88A00231F21 /* UserTileView.swift */,
+				7E9C5A132A94D47800231F21 /* UsersListView.swift */,
+				7E9C5A192A94F13700231F21 /* UsersGridView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7E9C5A1C2A94F74400231F21 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				7E9C5A152A94D78900231F21 /* HomeTabView.swift */,
+				7E9C5A172A94D8F100231F21 /* UsersTabView.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		7E9C5A1D2A94F75E00231F21 /* RequestManager */ = {
+			isa = PBXGroup;
+			children = (
+				7E9C5A112A94D0E200231F21 /* RequestManager.swift */,
+			);
+			path = RequestManager;
+			sourceTree = "<group>";
+		};
+		7E9C5A202A94F7D500231F21 /* Globals */ = {
+			isa = PBXGroup;
+			children = (
+				7E9C5A1E2A94F7B600231F21 /* Enums.swift */,
+				7E9C5A212A94F80100231F21 /* Strings.swift */,
+			);
+			path = Globals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,9 +337,11 @@
 				7E9C5A162A94D78900231F21 /* HomeTabView.swift in Sources */,
 				7E9C5A0A2A94C09700231F21 /* UserEntity.swift in Sources */,
 				7E9C5A122A94D0E200231F21 /* RequestManager.swift in Sources */,
+				7E9C5A222A94F80100231F21 /* Strings.swift in Sources */,
 				7E9C59DF2A94BDD800231F21 /* iOS_Carrefour_ChallengeApp.swift in Sources */,
 				7E9C5A0E2A94C5D900231F21 /* UserReposEntity.swift in Sources */,
 				7E9C5A142A94D47800231F21 /* UsersListView.swift in Sources */,
+				7E9C5A1F2A94F7B600231F21 /* Enums.swift in Sources */,
 				7E9C5A182A94D8F100231F21 /* UsersTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
