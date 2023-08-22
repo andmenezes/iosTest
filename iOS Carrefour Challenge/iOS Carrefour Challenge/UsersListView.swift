@@ -10,7 +10,7 @@ import SwiftUI
 struct UsersListView: View {
     var users: [UserEntity]
     var loadingText: String
-    var isDiscover = false
+    var displayType: DisplayType
     
     var body: some View {
         ScrollView {
@@ -27,12 +27,7 @@ struct UsersListView: View {
                     
                 } else {
                     ForEach(self.users) { user in
-//                        NavigationLink(destination: EventDetailView(event: event,
-//                                                                    isDiscover: self.isDiscover)) {
-                            UserTileView(user: user)
-//                        }
-//                        .buttonStyle(PlainButtonStyle())
-                        
+                        UserTileView(user: user, displayType: .list)
                     }
                 }
             }
@@ -43,8 +38,8 @@ struct UsersListView: View {
 struct UsersListView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            UsersListView(users: [UserEntity.testEvent1,UserEntity.testEvent2], loadingText: "")
-            UsersListView(users: [], loadingText: "Carregando Usuários")
+            UsersListView(users: [UserEntity.testEvent1,UserEntity.testEvent2], loadingText: "", displayType: .list)
+            UsersListView(users: [], loadingText: "Carregando Usuários", displayType: .list)
             
         }
         

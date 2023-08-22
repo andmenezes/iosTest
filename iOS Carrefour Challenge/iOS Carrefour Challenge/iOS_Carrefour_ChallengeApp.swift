@@ -11,7 +11,10 @@ import SwiftUI
 struct iOS_Carrefour_ChallengeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
+                .onAppear(perform: {
+                    RequestManager.shared.getUsersAPiData()
+                })
         }
     }
 }

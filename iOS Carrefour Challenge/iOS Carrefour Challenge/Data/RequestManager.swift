@@ -12,7 +12,7 @@ class RequestManager: ObservableObject {
     
     @Published var usersArray: [UserEntity] = []
     
-    func getDiscoveryEventsAPiData() {
+    func getUsersAPiData() {
         if let url = URL(string: "https://api.github.com/users") {
             let request = URLRequest(url: url)
             URLSession.shared.dataTask(with: request) { (data, response, error) in

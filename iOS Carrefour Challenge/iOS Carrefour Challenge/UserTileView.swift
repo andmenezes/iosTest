@@ -12,6 +12,8 @@ struct UserTileView: View {
     @Environment(\.colorScheme) var colorScheme
 
     @ObservedObject var user: UserEntity
+    
+    var displayType: DisplayType
 
     var body: some View {
 
@@ -32,12 +34,12 @@ struct UserTileView: View {
 
             Rectangle()
                 .foregroundColor(.orange)
-                .frame(height: 15)
+                .frame(height: displayType == .list ? 15 : 5)
 
             HStack {
                 Text(self.user.userName)
-                    .font(.title)
-                    .padding(10)
+                    .font(self.font())
+                    .padding(5)
                 Spacer()
             }
             .background(backgroundColor)
@@ -46,10 +48,22 @@ struct UserTileView: View {
         .shadow(radius: 10)
         .padding()
     }
+    
+    func font() -> Font {
+        if self.displayType == .list {
+            return .title
+        }
+        return .body
+    }
+    
 }
 
 struct UserTileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserTileView(user: UserEntity.testEvent1)
+        Group {
+            UserTileView(user: UserEntity.testEvent1, displayType: .list)
+            UserTileView(user: UserEntity.testEvent1, displayType: .grid)
+        }
+        
     }
 }

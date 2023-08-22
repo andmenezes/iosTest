@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7E9C59DF2A94BDD800231F21 /* iOS_Carrefour_ChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C59DE2A94BDD800231F21 /* iOS_Carrefour_ChallengeApp.swift */; };
-		7E9C59E12A94BDD800231F21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C59E02A94BDD800231F21 /* ContentView.swift */; };
+		7E9C59E12A94BDD800231F21 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C59E02A94BDD800231F21 /* MainView.swift */; };
 		7E9C59E32A94BDDC00231F21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9C59E22A94BDDC00231F21 /* Assets.xcassets */; };
 		7E9C59E62A94BDDC00231F21 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9C59E52A94BDDC00231F21 /* Preview Assets.xcassets */; };
 		7E9C59F02A94BDDC00231F21 /* iOS_Carrefour_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C59EF2A94BDDC00231F21 /* iOS_Carrefour_ChallengeTests.swift */; };
@@ -20,6 +20,9 @@
 		7E9C5A102A94C88A00231F21 /* UserTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C5A0F2A94C88A00231F21 /* UserTileView.swift */; };
 		7E9C5A122A94D0E200231F21 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C5A112A94D0E200231F21 /* RequestManager.swift */; };
 		7E9C5A142A94D47800231F21 /* UsersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C5A132A94D47800231F21 /* UsersListView.swift */; };
+		7E9C5A162A94D78900231F21 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C5A152A94D78900231F21 /* HomeTabView.swift */; };
+		7E9C5A182A94D8F100231F21 /* UsersTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C5A172A94D8F100231F21 /* UsersTabView.swift */; };
+		7E9C5A1A2A94F13700231F21 /* UsersGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C5A192A94F13700231F21 /* UsersGridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +45,7 @@
 /* Begin PBXFileReference section */
 		7E9C59DB2A94BDD800231F21 /* iOS Carrefour Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Carrefour Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E9C59DE2A94BDD800231F21 /* iOS_Carrefour_ChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Carrefour_ChallengeApp.swift; sourceTree = "<group>"; };
-		7E9C59E02A94BDD800231F21 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7E9C59E02A94BDD800231F21 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7E9C59E22A94BDDC00231F21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E9C59E52A94BDDC00231F21 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7E9C59EB2A94BDDC00231F21 /* iOS Carrefour ChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Carrefour ChallengeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +59,9 @@
 		7E9C5A0F2A94C88A00231F21 /* UserTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTileView.swift; sourceTree = "<group>"; };
 		7E9C5A112A94D0E200231F21 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		7E9C5A132A94D47800231F21 /* UsersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListView.swift; sourceTree = "<group>"; };
+		7E9C5A152A94D78900231F21 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
+		7E9C5A172A94D8F100231F21 /* UsersTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTabView.swift; sourceTree = "<group>"; };
+		7E9C5A192A94F13700231F21 /* UsersGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersGridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,9 +113,12 @@
 			isa = PBXGroup;
 			children = (
 				7E9C59DE2A94BDD800231F21 /* iOS_Carrefour_ChallengeApp.swift */,
-				7E9C59E02A94BDD800231F21 /* ContentView.swift */,
+				7E9C59E02A94BDD800231F21 /* MainView.swift */,
+				7E9C5A152A94D78900231F21 /* HomeTabView.swift */,
+				7E9C5A172A94D8F100231F21 /* UsersTabView.swift */,
 				7E9C5A0F2A94C88A00231F21 /* UserTileView.swift */,
 				7E9C5A132A94D47800231F21 /* UsersListView.swift */,
+				7E9C5A192A94F13700231F21 /* UsersGridView.swift */,
 				7E9C5A082A94C06D00231F21 /* Data */,
 				7E9C59E22A94BDDC00231F21 /* Assets.xcassets */,
 				7E9C59E42A94BDDC00231F21 /* Preview Content */,
@@ -285,12 +294,15 @@
 			files = (
 				7E9C5A0C2A94C5CD00231F21 /* UserDetailEntity.swift in Sources */,
 				7E9C5A102A94C88A00231F21 /* UserTileView.swift in Sources */,
-				7E9C59E12A94BDD800231F21 /* ContentView.swift in Sources */,
+				7E9C59E12A94BDD800231F21 /* MainView.swift in Sources */,
+				7E9C5A1A2A94F13700231F21 /* UsersGridView.swift in Sources */,
+				7E9C5A162A94D78900231F21 /* HomeTabView.swift in Sources */,
 				7E9C5A0A2A94C09700231F21 /* UserEntity.swift in Sources */,
 				7E9C5A122A94D0E200231F21 /* RequestManager.swift in Sources */,
 				7E9C59DF2A94BDD800231F21 /* iOS_Carrefour_ChallengeApp.swift in Sources */,
 				7E9C5A0E2A94C5D900231F21 /* UserReposEntity.swift in Sources */,
 				7E9C5A142A94D47800231F21 /* UsersListView.swift in Sources */,
+				7E9C5A182A94D8F100231F21 /* UsersTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
