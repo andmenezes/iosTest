@@ -12,9 +12,6 @@ struct iOS_Carrefour_ChallengeApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .onAppear(perform: {
-                    RequestManager.shared.getUsersAPiData()
-                })
         }
     }
 }

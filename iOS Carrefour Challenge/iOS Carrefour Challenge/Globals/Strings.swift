@@ -9,7 +9,6 @@ import Foundation
 
 extension String {
     struct hardedCode {
-        static let loadingUsers = "Estamos carregando os usuários 🤘🏻"
         static let gitHubUsers = "Github Users"
         static let usersList = "Lista de Usuários"
         static let usersGrid = "Grid de Usuários"
@@ -18,6 +17,7 @@ extension String {
     
     struct endPoints {
         static let getUsers = "https://api.github.com/users"
+        static let getUserDetailData = "https://api.github.com/users/"
     }
     
     struct systemImages {

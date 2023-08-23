@@ -9,7 +9,6 @@ import SwiftUI
 
 struct UsersGridView: View {
     var users: [UserEntity]
-    var loadingText: String
     var displayType: DisplayType
     
     var columns: [GridItem] = [
@@ -22,7 +21,10 @@ struct UsersGridView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 5) {
                 ForEach(self.users) { user in
-                    UserTileView(user: user, displayType: .grid)
+                    NavigationLink(destination: UserDetailView(user: user)) {
+                        UserTileView(user: user, displayType: .grid)
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
         }
@@ -32,8 +34,8 @@ struct UsersGridView: View {
 struct UsersGridView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            UsersGridView(users: [UserEntity.testEvent1,UserEntity.testEvent2], loadingText: "", displayType: .grid)
-            UsersGridView(users: [], loadingText: "Carregando Usuários", displayType: .grid)
+            UsersGridView(users: [UserEntity.testEvent1,UserEntity.testEvent2], displayType: .grid)
+            UsersGridView(users: [], displayType: .grid)
             
         }
     }

@@ -12,32 +12,53 @@ struct UsersTabView: View {
     var displayType: DisplayType = .list
     
     var body: some View {
-        if displayType == .list {
-            UsersListView(users: self.data.usersArray, loadingText: String.hardedCode.loadingUsers, displayType: self.displayType)
+        ZStack {
+            if displayType == .list {
+                UsersListView(users: self.data.usersArray, displayType: self.displayType)
+                
+                    .navigationTitle(String.hardedCode.gitHubUsers)
+                    .navigationBarItems(trailing:
+                                            Button(action: {
+                        
+                        self.reloadData()
+                    }) {
+                        Image(systemName: String.systemImages.arrowClockwise)
+                            .font(.body)
+                    }
+                    )
+                
+            } else {
+                
+                UsersGridView(users: self.data.usersArray, displayType: .grid)
+                
+                    .navigationTitle(String.hardedCode.gitHubUsers)
+                    .navigationBarItems(trailing:
+                                            Button(action: {
+                        self.reloadData()
+                    }) {
+                        Image(systemName: String.systemImages.arrowClockwise)
+                            .font(.body)
+                    }
+                    )
+            }
             
-                .navigationTitle(String.hardedCode.gitHubUsers)
-                .navigationBarItems(trailing:
-                                        Button(action: {
-                    data.getUsersAPiData()
-                }) {
-                    Image(systemName: String.systemImages.arrowClockwise)
-                        .font(.body)
-                }
-                )
-            
-        } else {
-            
-            UsersGridView(users: self.data.usersArray, loadingText: String.hardedCode.loadingUsers, displayType: .grid)
-            
-                .navigationTitle(String.hardedCode.gitHubUsers)
-                .navigationBarItems(trailing:
-                                        Button(action: {
-                    data.getUsersAPiData()
-                }) {
-                    Image(systemName: String.systemImages.arrowClockwise)
-                        .font(.body)
-                }
-                )
+            if self.data.isLoading {
+                LoadingView()
+            }
+        }
+        .onAppear {
+            self.getUsersAPIData()
+        }
+    }
+    
+    func reloadData() {
+        self.data.usersArray = []
+        self.getUsersAPIData()
+    }
+    
+    func getUsersAPIData() {
+        if self.data.usersArray.count == 0 {
+            RequestManager.shared.getUsersAPIData()
         }
     }
 }
@@ -47,3 +68,5 @@ struct UsersTabView_Previews: PreviewProvider {
         UsersTabView()
     }
 }
+
+
