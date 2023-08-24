@@ -12,6 +12,7 @@ class RequestManager: ObservableObject {
     
     @Published var usersArray: [UserEntity] = []
     @Published var userDetail: UserDetailEntity = UserDetailEntity()
+    @Published var usersReposArray: [UserReposEntity] = []
     @Published var isLoading: Bool = false
     
     func getUsersAPIData() {
@@ -42,7 +43,7 @@ class RequestManager: ObservableObject {
     
     func getUserDetailsAPIData(userName: String) {
         self.isLoading = true
-        if let url = URL(string: "\(String.endPoints.getUsers)/\(userName)") {
+        if let url = URL(string: String.endPoints.getUserDetail(userName)) {
             let request = URLRequest(url: url)
             URLSession.shared.dataTask(with: request) { (data, response, error) in
                 
@@ -50,7 +51,7 @@ class RequestManager: ObservableObject {
                     if let json = try? JSONSerialization.jsonObject(with: webData) as? [String: Any] {
                         DispatchQueue.main.async {
                             self.userDetail = UserDetailEntity(json: json)
-                            self.isLoading = false
+                            self.getUserReposAPIData(userName: userName)
                         }
                     }
                 }
@@ -58,23 +59,31 @@ class RequestManager: ObservableObject {
         }
     }
     
-//    func getUserReposAPIData(userName: String) {
-//        self.isLoading = true
-//        if let url = URL(string: "\(String.endPoints.getUsers)\(userName)/repo") {
-//            let request = URLRequest(url: url)
-//            URLSession.shared.dataTask(with: request) { (data, response, error) in
-//                
-//                if let webData = data {
-//                    if let json = try? JSONSerialization.jsonObject(with: webData) as? [String: Any] {
-//                        DispatchQueue.main.async {
-//                            self.userDetail = UserDetailEntity(json: json)
-//                            self.isLoading = false
-//                        }
-//                    }
-//                }
-//            }.resume()
-//        }
-//    }
+    func getUserReposAPIData(userName: String) {
+        self.isLoading = true
+        if let url = URL(string: String.endPoints.getUserRepos(userName)) {
+            let request = URLRequest(url: url)
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                if let webData = data {
+                    if let json = try? JSONSerialization.jsonObject(with: webData) as? [[String: Any]] {
+                        var usersReposToAdd: [UserReposEntity] = []
+                        
+                        for eventJSON in json {
+                            
+                            let user = UserReposEntity(json: eventJSON)
+                            usersReposToAdd.append(user)
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.usersReposArray = usersReposToAdd
+                            self.isLoading = false
+                        }
+                    }
+                }
+            }.resume()
+        }
+    }
 }
 
 extension RequestManager {

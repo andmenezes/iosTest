@@ -52,7 +52,7 @@ struct UserDetailView: View {
                         
                         VStack {
                             HStack {
-                                Text("Biografia resumida: ")
+                                Text(String.hardedCode.bio)
                                     .font(.title2)
                                     .padding()
                                 Spacer()
@@ -72,7 +72,7 @@ struct UserDetailView: View {
                     
                     VStack {
                         HStack {
-                            Text("Repositórios publicos: \(self.data.userDetail.publicRepos)")
+                            Text("\(String.hardedCode.publicRepos) \(self.data.userDetail.publicRepos)")
                                 .font(.title2)
                                 .padding()
                                 .padding(.leading, 5)
@@ -83,14 +83,14 @@ struct UserDetailView: View {
                         Divider()
                         HStack {
                             
-                            Text("Seguidores: \(self.data.userDetail.followers)")
+                            Text("\(String.hardedCode.followers) \(self.data.userDetail.followers)")
                                 .font(.title2)
                                 .padding()
                             
                             Divider()
                                 .padding(.leading, 15)
                             
-                            Text("Seguindo: \(self.data.userDetail.following)")
+                            Text("\(String.hardedCode.following) \(self.data.userDetail.following)")
                                 .font(.title2)
                                 .padding(.leading, 15)
                             Spacer()
@@ -98,7 +98,40 @@ struct UserDetailView: View {
                         .padding(.leading, 5)
                     }
                     Divider()
-                    //                }
+                    
+                    if self.data.usersReposArray.count > 0 {
+                        HStack {
+                            Text("Repositórios: ")
+                                .font(.title2)
+                                .padding()
+                            Spacer()
+                        }
+                        
+                        ForEach(self.data.usersReposArray) { repo in
+                            
+                            HStack {
+                                
+                                Button(action: {
+                                    UIApplication.shared.open(repo.validUrl()!)
+                                }) {
+                                    Text(repo.name)
+                                        .font(.title3)
+                                        .padding([.leading, .top, .bottom])
+                                    if let language = repo.language, !language.isEmpty {
+                                        Image(systemName: String.systemImages.chevronLeft)
+                                            .foregroundColor(.orange)
+                                        Text(language)
+                                            .font(.title3)
+                                            .foregroundColor(.orange)
+                                        Image(systemName: String.systemImages.chevronRight)
+                                            .foregroundColor(.orange)
+                                    }
+                                    Spacer()
+                                }
+                            }
+                            Divider()
+                        }
+                    }
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .onAppear {

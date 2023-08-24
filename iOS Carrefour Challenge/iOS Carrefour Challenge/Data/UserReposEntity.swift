@@ -19,12 +19,14 @@ class UserReposEntity: ObservableObject, Identifiable, Decodable {
     @Published var name: String = ""
     @Published var isPrivate: Bool = false
     @Published var language: String? = ""
+    @Published var htmlUrl: String = ""
     
     enum CodingKeys: String, CodingKey {
         case id
         case name
         case isPrivate = "private"
         case language
+        case htmlUrl = "html_url"
     }
     
     init() {
@@ -38,6 +40,7 @@ class UserReposEntity: ObservableObject, Identifiable, Decodable {
         self.name = try values.decode(String.self, forKey: .name)
         self.isPrivate = try values.decode(Bool.self, forKey: .isPrivate)
         self.language = try values.decode(String.self, forKey: .language)
+        self.htmlUrl = try values.decode(String.self, forKey: .htmlUrl)
     }
     
     init(json: [String: Any]) {
@@ -56,5 +59,13 @@ class UserReposEntity: ObservableObject, Identifiable, Decodable {
         if let language = json[CodingKeys.language.rawValue] as? String {
             self.language = language
         }
+        
+        if let htmlUrl = json[CodingKeys.htmlUrl.rawValue] as? String {
+            self.htmlUrl = htmlUrl
+        }
+    }
+    
+    func validUrl() -> URL? {
+        return URL(string: self.htmlUrl)
     }
 }

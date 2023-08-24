@@ -13,11 +13,20 @@ extension String {
         static let usersList = "Lista de Usuários"
         static let usersGrid = "Grid de Usuários"
         static let aboutApp = "Sobre o App"
+        static let bio = "Biografia resumida: "
+        static let publicRepos = "Repositórios publicos: "
+        static let followers = "Seguidores: "
+        static let following = "Seguindo: "
     }
     
     struct endPoints {
         static let getUsers = "https://api.github.com/users"
-        static let getUserDetailData = "https://api.github.com/users/"
+        static func getUserDetail(_ userName: String) -> String {
+            return "https://api.github.com/users/\(userName)"
+        }
+        static func getUserRepos(_ userName: String) -> String {
+            return "https://api.github.com/users/\(userName)/repos"
+        }
     }
     
     struct systemImages {
@@ -25,6 +34,7 @@ extension String {
         static let rectangleGrid = "rectangle.grid.3x2" // 􀇶
         static let infoCircleFill = "info.circle.fill" // 􀅵
         static let arrowClockwise = "arrow.clockwise" // 􀅈
+        static let chevronLeft = "chevron.compact.left" // 􀆒
+        static let chevronRight = "chevron.compact.right" // 􀆓
     }
-    
 }
