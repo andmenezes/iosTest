@@ -10,11 +10,29 @@ import SwiftUI
 struct UsersTabView: View {
     @ObservedObject var data = RequestManager.shared
     var displayType: DisplayType = .list
+    @State private var searchTerm = ""
+    
+    var usersToShow: [UserEntity] {
+        
+        guard self.searchTerm.count > 3 else {
+            return self.data.usersArray
+        }
+        
+        if self.searchTerm.count > 3 {
+            self.searchApiForUser(userName: self.searchTerm)
+        }
+        
+        if self.data.searchUserArray.count > 0 {
+            return self.data.searchUserArray
+        }else {
+            return self.data.usersArray
+        }
+    }
     
     var body: some View {
         ZStack {
             if displayType == .list {
-                UsersListView(users: self.data.usersArray, displayType: self.displayType)
+                UsersListView(users: self.usersToShow, displayType: self.displayType)
                 
                     .navigationTitle(String.hardedCode.gitHubUsers)
                     .navigationBarItems(trailing:
@@ -29,7 +47,7 @@ struct UsersTabView: View {
                 
             } else {
                 
-                UsersGridView(users: self.data.usersArray, displayType: .grid)
+                UsersGridView(users: self.usersToShow, displayType: .grid)
                 
                     .navigationTitle(String.hardedCode.gitHubUsers)
                     .navigationBarItems(trailing:
@@ -46,6 +64,8 @@ struct UsersTabView: View {
                 LoadingView()
             }
         }
+        .searchable(text: $searchTerm, prompt: "Digite o nome do usuário")
+        
         .onAppear {
             self.getUsersAPIData()
         }
@@ -53,6 +73,7 @@ struct UsersTabView: View {
     
     func reloadData() {
         self.data.usersArray = []
+        self.searchTerm = ""
         self.getUsersAPIData()
     }
     
@@ -60,6 +81,10 @@ struct UsersTabView: View {
         if self.data.usersArray.count == 0 {
             RequestManager.shared.getUsersAPIData()
         }
+    }
+    
+    func searchApiForUser(userName: String) {
+        RequestManager.shared.searchApiForUser(userName: userName)
     }
 }
 

@@ -12,7 +12,7 @@ class UserEntity: ObservableObject, Identifiable, Decodable {
     @Published var id: Int = UUID().hashValue
     @Published var userName: String = ""
     @Published var avatarURL: String = ""
-    @Published var avatarData: Data?
+    @Published var avatarImageData: Data?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -44,7 +44,7 @@ class UserEntity: ObservableObject, Identifiable, Decodable {
         if let imageUrl = json[CodingKeys.avatarURL.rawValue] as? String {
             if let url = URL(string: imageUrl) {
                 if let data = try? Data(contentsOf: url) {
-                    self.avatarData = data
+                    self.avatarImageData = data
                 }
             }
         }
@@ -59,7 +59,7 @@ extension UserEntity {
         user.avatarURL = "https://avatars.githubusercontent.com/u/17852122?v=4"
         
         if let image = UIImage(named: "avatarTestImage"), let data = image.pngData() {
-            user.avatarData = data
+            user.avatarImageData = data
         }
 
         return user
@@ -72,7 +72,7 @@ extension UserEntity {
         user.avatarURL = "https://avatars.githubusercontent.com/u/17852122?v=4"
         
         if let image = UIImage(named: "avatarTestImage"), let data = image.pngData() {
-            user.avatarData = data
+            user.avatarImageData = data
         }
 
         return user

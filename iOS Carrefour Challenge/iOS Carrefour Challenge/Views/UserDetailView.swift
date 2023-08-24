@@ -25,7 +25,7 @@ struct UserDetailView: View {
             ScrollView {
                 VStack(spacing: 0) {
                     
-                    if let imageData = self.user.avatarData,
+                    if let imageData = self.user.avatarImageData,
                        let uiImage = UIImage(data: imageData)
                     {
                         let image = Image(uiImage: uiImage)

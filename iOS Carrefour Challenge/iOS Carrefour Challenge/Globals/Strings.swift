@@ -21,9 +21,15 @@ extension String {
     
     struct endPoints {
         static let getUsers = "https://api.github.com/users"
+        
+        static func searchUserByName(_ userName: String) -> String {
+            return "https://api.github.com/search/users?q=\(userName)"
+        }
+        
         static func getUserDetail(_ userName: String) -> String {
             return "https://api.github.com/users/\(userName)"
         }
+        
         static func getUserRepos(_ userName: String) -> String {
             return "https://api.github.com/users/\(userName)/repos"
         }

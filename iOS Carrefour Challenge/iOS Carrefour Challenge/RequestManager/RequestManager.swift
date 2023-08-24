@@ -11,9 +11,11 @@ class RequestManager: ObservableObject {
     static var shared = RequestManager()
     
     @Published var usersArray: [UserEntity] = []
+    @Published var searchUserArray: [UserEntity] = []
     @Published var userDetail: UserDetailEntity = UserDetailEntity()
     @Published var usersReposArray: [UserReposEntity] = []
     @Published var isLoading: Bool = false
+    private weak var previousTask: URLSessionTask?
     
     func getUsersAPIData() {
         self.isLoading = true
@@ -82,6 +84,36 @@ class RequestManager: ObservableObject {
                     }
                 }
             }.resume()
+        }
+    }
+    
+    func searchApiForUser(userName: String) {
+        
+        if let url = URL(string: String.endPoints.searchUserByName(userName)) {
+//            self.previousTask?.cancel()
+            
+            let request = URLRequest(url: url)
+            self.previousTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                if let webData = data {
+                    if let json = try? JSONSerialization.jsonObject(with: webData) as? [String: Any] {
+                        if let items = json["items"] as? [[String: Any]] {
+                            var usersArrayToAdd: [UserEntity] = []
+                            
+                            for eventJSON in items {
+                                
+                                let user = UserEntity(json: eventJSON)
+                                usersArrayToAdd.append(user)
+                            }
+                            
+                            DispatchQueue.main.async {
+                                self.searchUserArray = usersArrayToAdd
+                            }
+                        }
+                    }
+                }
+            }
+            self.previousTask?.resume()
         }
     }
 }
