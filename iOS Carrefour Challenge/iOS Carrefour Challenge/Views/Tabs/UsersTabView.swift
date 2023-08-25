@@ -14,12 +14,8 @@ struct UsersTabView: View {
     
     var usersToShow: [UserEntity] {
         
-        guard self.searchTerm.count > 3 else {
+        guard self.searchTerm.count > 0 else {
             return self.data.usersArray
-        }
-        
-        if self.searchTerm.count > 3 {
-            self.searchApiForUser(userName: self.searchTerm)
         }
         
         if self.data.searchUserArray.count > 0 {
@@ -65,6 +61,9 @@ struct UsersTabView: View {
             }
         }
         .searchable(text: $searchTerm, prompt: "Digite o nome do usuário")
+        .onSubmit(of: .search) {
+            self.searchApiForUser(userName: self.searchTerm)
+        }
         
         .onAppear {
             self.getUsersAPIData()

@@ -15,7 +15,6 @@ class RequestManager: ObservableObject {
     @Published var userDetail: UserDetailEntity = UserDetailEntity()
     @Published var usersReposArray: [UserReposEntity] = []
     @Published var isLoading: Bool = false
-    private weak var previousTask: URLSessionTask?
     
     func getUsersAPIData() {
         self.isLoading = true
@@ -88,12 +87,13 @@ class RequestManager: ObservableObject {
     }
     
     func searchApiForUser(userName: String) {
+        self.isLoading = true
+        self.searchUserArray = []
         
         if let url = URL(string: String.endPoints.searchUserByName(userName)) {
-//            self.previousTask?.cancel()
             
             let request = URLRequest(url: url)
-            self.previousTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
                 
                 if let webData = data {
                     if let json = try? JSONSerialization.jsonObject(with: webData) as? [String: Any] {
@@ -107,13 +107,13 @@ class RequestManager: ObservableObject {
                             }
                             
                             DispatchQueue.main.async {
+                                self.isLoading = false
                                 self.searchUserArray = usersArrayToAdd
                             }
                         }
                     }
                 }
-            }
-            self.previousTask?.resume()
+            }.resume()
         }
     }
 }
