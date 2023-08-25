@@ -12,7 +12,6 @@ extension String {
         static let gitHubUsers = "Github Users"
         static let usersList = "Lista de Usuários"
         static let usersGrid = "Grid de Usuários"
-        static let aboutApp = "Sobre o App"
         static let bio = "Biografia resumida: "
         static let publicRepos = "Repositórios publicos: "
         static let followers = "Seguidores: "

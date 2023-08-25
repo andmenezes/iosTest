@@ -24,13 +24,6 @@ struct HomeTabView: View {
                 Image(systemName: String.systemImages.rectangleGrid)
                 Text(String.hardedCode.usersGrid)
             }
-            NavigationView {
-                Text(String.hardedCode.aboutApp)
-            }
-                .tabItem {
-                    Image(systemName: String.systemImages.infoCircleFill)
-                    Text(String.hardedCode.aboutApp)
-                }
         }
     }
 }
